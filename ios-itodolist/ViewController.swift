@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import Swinject
+import SwinjectStoryboard
 
 class ViewController: UIViewController {
 
@@ -15,11 +19,24 @@ class ViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    @IBOutlet weak var tLabel: UILabel!
+    
+    var loginViewModel: LoginViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        initInjections()
+        bindObservables()
+        loginViewModel?.fetchFirstData()
     }
 
+    private func bindObservables() {
+        _ = loginViewModel?.title.asObservable().bind(to: tLabel.rx.text)
+    }
+    
+    private func initInjections() {
+        loginViewModel = SwinjectStoryboard.getContainer().resolve(LoginViewModel.self)
+    }
 
 }
 
