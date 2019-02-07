@@ -7,24 +7,31 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import Swinject
+import SwinjectStoryboard
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var tLabel: UILabel!
+    
+    var mainViewModel: MainViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initInjections()
+        bindObservables()
+        mainViewModel?.fetchFirstData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func bindObservables() {
+        _ = mainViewModel?.title.asObservable().bind(to: tLabel.rx.text)
     }
-    */
+    
+    private func initInjections() {
+        mainViewModel = SwinjectStoryboard.getContainer().resolve(MainViewModel.self)
+    }
+
 
 }

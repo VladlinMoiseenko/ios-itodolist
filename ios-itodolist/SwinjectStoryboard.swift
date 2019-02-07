@@ -14,7 +14,13 @@ extension SwinjectStoryboard {
             defaultContainer.register(LoginViewModel.self, factory: { _ in
                 LoginViewModel(apiController: apiController)
             })
+ 
+            defaultContainer.register(MainViewModel.self, factory: { _ in
+                MainViewModel(apiController: apiController)
+            })
+            
         }
+        
     }
     
     static func getContainer() -> Container {
