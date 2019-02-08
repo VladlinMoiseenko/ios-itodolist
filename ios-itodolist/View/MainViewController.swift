@@ -32,11 +32,15 @@ class MainViewController: UIViewController {
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
                 
-        let exitButton = UIButton(type: .system)
-        exitButton.setTitle("Exit", for: .normal)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: exitButton)
+        let logoutButton = UIButton(type: .system)
+        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.addTarget(self, action: #selector(logoutButtonAction), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: logoutButton)
     }
     
+    func logoutButtonAction() {
+        print("Logout is tapped")
+    }
     
     private func bindObservables() {
         _ = mainViewModel?.title.asObservable().bind(to: tLabel.rx.text)
