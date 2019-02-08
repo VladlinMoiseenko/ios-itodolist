@@ -91,19 +91,43 @@
 			isa = PBXGroup;
 			children = (
 				84EB7DB5220C73A700C43AFB /* AppDelegate.swift */,
-				84EB7DB7220C73A700C43AFB /* ViewController.swift */,
-				84EB7DCD220C9AAB00C43AFB /* LoginViewModel.swift */,
-				84EB7DC7220C91FE00C43AFB /* MainViewController.swift */,
-				8405A1C7220CA82C0014FFC7 /* MainViewModel.swift */,
-				84EB7DB9220C73A700C43AFB /* Main.storyboard */,
+				84FA9675220DC8A0008C62E5 /* View */,
+				84FA9676220DC8D5008C62E5 /* ViewModel */,
+				84FA9677220DCA42008C62E5 /* Model */,
 				84EB7DBC220C73AA00C43AFB /* Assets.xcassets */,
+				84EB7DB9220C73A700C43AFB /* Main.storyboard */,
 				84EB7DBE220C73AA00C43AFB /* LaunchScreen.storyboard */,
 				84EB7DC1220C73AA00C43AFB /* Info.plist */,
-				84EB7DC9220C974000C43AFB /* TaskModel.swift */,
 				84EB7DCB220C979200C43AFB /* ApiController.swift */,
 				84EB7DCF220C9BD400C43AFB /* SwinjectStoryboard.swift */,
 			);
 			path = "ios-itodolist";
+			sourceTree = "<group>";
+		};
+		84FA9675220DC8A0008C62E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84EB7DB7220C73A700C43AFB /* ViewController.swift */,
+				84EB7DC7220C91FE00C43AFB /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84FA9676220DC8D5008C62E5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84EB7DCD220C9AAB00C43AFB /* LoginViewModel.swift */,
+				8405A1C7220CA82C0014FFC7 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84FA9677220DCA42008C62E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84EB7DC9220C974000C43AFB /* TaskModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
