@@ -20,10 +20,23 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBarItems()
         initInjections()
         bindObservables()
         mainViewModel?.fetchFirstData()
     }
+    
+    private func setupNavigationBarItems() {
+        let titleImageView = UIImageView(image: UIImage(named: "title_icon@2x.png")!)
+        titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        titleImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImageView
+                
+        let exitButton = UIButton(type: .system)
+        exitButton.setTitle("Exit", for: .normal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: exitButton)
+    }
+    
     
     private func bindObservables() {
         _ = mainViewModel?.title.asObservable().bind(to: tLabel.rx.text)

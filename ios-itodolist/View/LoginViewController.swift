@@ -16,7 +16,8 @@ class ViewController: UIViewController {
 
     @IBAction func buttonClicked(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
-        self.present(vc, animated: true, completion: nil)
+        //self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBOutlet weak var tLabel: UILabel!
