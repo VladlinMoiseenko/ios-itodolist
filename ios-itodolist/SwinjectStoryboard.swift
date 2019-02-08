@@ -21,6 +21,8 @@ extension SwinjectStoryboard {
             
         }
         
+        Container.loggingFunction = nil
+        
     }
     
     static func getContainer() -> Container {
