@@ -27,6 +27,9 @@ class MainViewController: UIViewController {
     }
     
     private func setupNavigationBarItems() {
+        
+        navigationItem.hidesBackButton = true
+        
         let titleImageView = UIImageView(image: UIImage(named: "title_icon@2x.png")!)
         titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         titleImageView.contentMode = .scaleAspectFit

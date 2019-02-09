@@ -16,11 +16,10 @@ class ViewController: UIViewController {
 
     @IBAction func buttonClicked(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
-        //self.present(vc, animated: true, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBOutlet weak var tLabel: UILabel!
+
     
     var loginViewModel: LoginViewModel?
     
@@ -28,11 +27,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         initInjections()
         bindObservables()
-        loginViewModel?.fetchFirstData()
+        //loginViewModel?.fetchFirstData()
     }
 
     private func bindObservables() {
-        _ = loginViewModel?.title.asObservable().bind(to: tLabel.rx.text)
+        //_ = loginViewModel?.title.asObservable().bind(to: tLabel.rx.text)
     }
     
     private func initInjections() {

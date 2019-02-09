@@ -13,24 +13,24 @@ class LoginViewModel {
     
     let apiController: ApiController
     
-    let title = Variable<String>("")
-    
-    private var model: TaskModel {
-        willSet {
-            title.value = "[TITLE FO:]\(newValue.title)"
-        }
-    }
-    
+//    let title = Variable<String>("")
+//
+//    private var model: TaskModel {
+//        willSet {
+//            title.value = "[TITLE FO:]\(newValue.title)"
+//        }
+//    }
+
     init(apiController: ApiController) {
         self.apiController = apiController
-        self.model = TaskModel()
+        //self.model = TaskModel()
     }
-    
-    func fetchFirstData() {
-        apiController.getFirstData(success: { model in
-            self.model = model
-        }, failure:  { errorMsg in
-            print(errorMsg)
-        })
-    }
+
+//    func fetchFirstData() {
+//        apiController.getFirstData(success: { model in
+//            self.model = model
+//        }, failure:  { errorMsg in
+//            print(errorMsg)
+//        })
+//    }
 }
