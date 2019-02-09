@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8405A1C8220CA82C0014FFC7 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8405A1C7220CA82C0014FFC7 /* MainViewModel.swift */; };
+		84102FB2220F113F008D786E /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84102FB1220F113F008D786E /* Credentials.swift */; };
 		84EB7DB6220C73A700C43AFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB7DB5220C73A700C43AFB /* AppDelegate.swift */; };
 		84EB7DB8220C73A700C43AFB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB7DB7220C73A700C43AFB /* LoginViewController.swift */; };
 		84EB7DBB220C73A700C43AFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB7DB9220C73A700C43AFB /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		0D29DBD7AC714B3593574853 /* Pods-ios-itodolist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-itodolist.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-itodolist/Pods-ios-itodolist.release.xcconfig"; sourceTree = "<group>"; };
 		8405A1C7220CA82C0014FFC7 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		84102FB1220F113F008D786E /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		84EB7DB2220C73A700C43AFB /* ios-itodolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-itodolist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EB7DB5220C73A700C43AFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84EB7DB7220C73A700C43AFB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				84EB7DC9220C974000C43AFB /* TaskModel.swift */,
+				84102FB1220F113F008D786E /* Credentials.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				84EB7DCC220C979200C43AFB /* ApiController.swift in Sources */,
 				84EB7DCA220C974000C43AFB /* TaskModel.swift in Sources */,
 				84EB7DB6220C73A700C43AFB /* AppDelegate.swift in Sources */,
+				84102FB2220F113F008D786E /* Credentials.swift in Sources */,
 				8405A1C8220CA82C0014FFC7 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
