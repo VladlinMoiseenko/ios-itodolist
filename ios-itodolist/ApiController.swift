@@ -15,29 +15,14 @@ class ApiController {
                                 encoding: JSONEncoding.default,
                                 headers: ["Content-Type": "application/json"])
             .observeOn(MainScheduler.instance)
-//            .map { (r, json) -> [String: Any] in
-//                guard let jsonDict = json as? [String: Any] else {
-//                    return [:]
-//                }
-//
-//                return jsonDict
-//            }
-//            .subscribe(onNext: { jsonDict in
-//                print("j:", jsonDict)
-//                let model = Authorize(jsonDict: jsonDict)
-//                print("m:", model)
-        
             .subscribe(onNext: { resp, data in
                 //print(String(data: data, encoding: .utf8))
                 print(try! JSONSerialization.jsonObject(with: data, options: .mutableLeaves))
                 
-                let parsedResult: Authorize = try! JSONDecoder().decode(Authorize.self, from: data)
-                //let model = Authorize(jsonDict: jsonDict)
-                print("r:", parsedResult)
-                
-                //let res = "success"
-
-                //success(modfl)
+                let model: Authorize = try! JSONDecoder().decode(Authorize.self, from: data)
+                print("r:", model)
+              
+                success(model)
                 
             }, onError: { error in
                 failure("Error")
