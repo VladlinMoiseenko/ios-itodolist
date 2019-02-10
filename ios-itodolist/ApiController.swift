@@ -1,3 +1,4 @@
+import Alamofire
 import Foundation
 import RxSwift
 import RxAlamofire
@@ -7,23 +8,16 @@ class ApiController {
     let disposeBag = DisposeBag()
     let ENDPOINT_URL = "http://apitdlist.vladlin.ru/"
     
-    func authorize(success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
-        
-        let productObject = Credentials(username: "demo11", password: "demo11")
-        let params = try? JSONEncoder().encode(productObject)
-        
-        //RxAlamofire.requestJSON(.post, ENDPOINT_URL+"v1/authorize", parameters: params as? [String: Any], encoding: JSONEncoder.default, headers: [ "Content-Type": "application/json"])
-        RxAlamofire.requestJSON(.post, ENDPOINT_URL+"v1/authorize", parameters: params)
-        //RxAlamofire.requestJSON(.post, ENDPOINT_URL+"v1/authorize")
+    func authorize(param:[String : Any], success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
+        RxAlamofire.requestData(.post,
+                                ENDPOINT_URL+"v1/authorize",
+                                parameters: param,
+                                encoding: JSONEncoding.default,
+                                headers: ["Content-Type": "application/json"])
             .observeOn(MainScheduler.instance)
-            .map { (r, json) -> [String: Any] in
-                guard let jsonDict = json as? [String: Any] else {
-                    return [:]
-                }
-                return jsonDict
-            }
-            .subscribe(onNext: { jsonDict in
-                print("j:", jsonDict)
+            .subscribe(onNext: { resp, data in
+                //print(String(data: data, encoding: .utf8))
+                print(try! JSONSerialization.jsonObject(with: data, options: .mutableLeaves))
                 
                 let res = "success"
 

@@ -28,27 +28,10 @@ class LoginViewModel {
 
     func apiAuthorize(_ username:String, _ password:String) -> Bool {
         
-        // demo11 demo11
-        
+        let jsonParam = try? JSONEncoder().encode(Credentials(username: username, password: password))
+        let param = try? JSONSerialization.jsonObject(with: jsonParam!, options: []) as? [String : Any]
 
-        
-        
-        //Credentials
-//        let productObject = Credentials(username: "demo11", password: "demo11")
-//        let encodedData = try? JSONEncoder().encode(productObject)
-//        
-//        print("j:", encodedData)
-        
-//        let array = [ "one", "two" ]
-//
-//        let r = json(from:array as Any)
-//
-//
-//        print(username)
-//        print(password)
-        
-        
-        apiController.authorize(success: {_ in
+        apiController.authorize(param: param as! [String : Any], success: {_ in
            return true
         }, failure:  { errorMsg in
             print(errorMsg)
@@ -57,19 +40,4 @@ class LoginViewModel {
         return false
     }
     
-//    func json(from object:Any) -> String? {
-//        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
-//            return nil
-//        }
-//        return String(data: data, encoding: String.Encoding.utf8)
-//    }
-    
-    
-//    func fetchFirstData() {
-//        apiController.getFirstData(success: { model in
-//            self.model = model
-//        }, failure:  { errorMsg in
-//            print(errorMsg)
-//        })
-//    }
 }
