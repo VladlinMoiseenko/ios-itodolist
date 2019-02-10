@@ -16,14 +16,8 @@ class ApiController {
                                 headers: ["Content-Type": "application/json"])
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { resp, data in
-                //print(String(data: data, encoding: .utf8))
-                print(try! JSONSerialization.jsonObject(with: data, options: .mutableLeaves))
-                
-                let model: Authorize = try! JSONDecoder().decode(Authorize.self, from: data)
-                print("r:", model)
-              
-                success(model)
-                
+                let modelAuthorize: Authorize = try! JSONDecoder().decode(Authorize.self, from: data)
+                success(modelAuthorize)
             }, onError: { error in
                 failure("Error")
             })

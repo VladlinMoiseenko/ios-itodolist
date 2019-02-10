@@ -18,7 +18,6 @@ struct Authorize: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.status = try! container.decode(Int.self, forKey: .status)
         
-        // Nested ratings
         let dataContainer = try container.nestedContainer(keyedBy: DataCodingKeys.self, forKey: .data)
         self.authorizationCode = try dataContainer.decode(String.self, forKey: .authorizationCode)
         self.expiresAt = try dataContainer.decode(Int.self, forKey: .expiresAt)

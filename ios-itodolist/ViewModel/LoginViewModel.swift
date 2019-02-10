@@ -13,40 +13,47 @@ class LoginViewModel {
     
     let apiController: ApiController
     
-//    let title = Variable<String>("")
-
-    private var model: Authorize {
+    //let status = Variable<Int>(0)
+    
+    private var modelAuthorize: Authorize {
         willSet {
-//            title.value = "[TITLE FO:]\(newValue.title)"
+            //print("ns:", newValue.status)
         }
     }
 
     init(apiController: ApiController) {
         self.apiController = apiController
-        self.model = Authorize()
+        self.modelAuthorize = Authorize()
     }
 
-    func apiAuthorize(_ username:String, _ password:String) -> Bool {
+    //func apiAuthorize(_ username:String, _ password:String) -> Bool {
+     func apiAuthorize(_ username:String, _ password:String) {
         
         let jsonParam = try? JSONEncoder().encode(Credentials(username: username, password: password))
         let param = try? JSONSerialization.jsonObject(with: jsonParam!, options: []) as? [String : Any]
 
-        apiController.authorize(param: param as! [String : Any], success: {model in
-            self.model = model
-        }, failure:  { errorMsg in
+        apiController.authorize(param: param as! [String : Any], success: {modelAuthorize in
+            //self.modelAuthorize = modelAuthorize
+            
+            if (modelAuthorize.status == 1) {
+                
+                UserDefaults.standard.set(modelAuthorize.authorizationCode, forKey: "authorizationCode")
+                
+//                apiController.accesstoken(param: param as! [String : Any], success: {model in
+//
+//                }, failure: { errorMsg in
+//                    print(errorMsg)
+//                })
+                
+                
+            } else {
+                UserDefaults.standard.set("empty", forKey: "authorizationCode")
+            }
+            
+        }, failure: { errorMsg in
             print(errorMsg)
         })
         
-        return false
     }
-    
-//    func fetchFirstData() {
-//        apiController.getFirstData(success: { model in
-//            self.model = model
-//        }, failure:  { errorMsg in
-//            print(errorMsg)
-//        })
-//    }
-    
-    
+
 }

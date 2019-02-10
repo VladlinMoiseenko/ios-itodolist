@@ -29,7 +29,7 @@ class MainViewModel {
     func fetchFirstData() {
         apiController.getFirstData(success: { model in
             self.model = model
-        }, failure:  { errorMsg in
+        }, failure: { errorMsg in
             print(errorMsg)
         })
     }

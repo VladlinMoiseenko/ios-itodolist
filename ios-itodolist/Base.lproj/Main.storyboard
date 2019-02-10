@@ -39,23 +39,32 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbb-Bs-1tE">
-                                <rect key="frame" x="164.5" y="176" width="46" height="30"/>
+                                <rect key="frame" x="166.5" y="176" width="42" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="9Ee-ez-7q4"/>
-                                    <constraint firstAttribute="height" constant="30" id="wed-iP-Lzy"/>
+                                    <constraint firstAttribute="height" constant="30" id="GXy-hR-Tzo"/>
+                                    <constraint firstAttribute="width" constant="42" id="pPp-HI-FyR"/>
                                 </constraints>
                                 <state key="normal" title="Log in"/>
                                 <connections>
                                     <action selector="LoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uLX-dt-jX5"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5UN-PY-0g3">
+                                <rect key="frame" x="112.5" y="229" width="150" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="mXG-up-cOQ"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Mbb-Bs-1tE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ja2-kh-qRe"/>
+                            <constraint firstItem="Mbb-Bs-1tE" firstAttribute="top" secondItem="SdD-ll-Q8U" secondAttribute="bottom" constant="8" id="6Tx-XO-40l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mbb-Bs-1tE" secondAttribute="bottom" constant="461" id="8Ha-tz-bNR"/>
+                            <constraint firstItem="5UN-PY-0g3" firstAttribute="top" secondItem="Mbb-Bs-1tE" secondAttribute="bottom" constant="23" id="IFr-n3-A4o"/>
                             <constraint firstItem="USI-NJ-xR7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OLt-CO-AMn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mbb-Bs-1tE" secondAttribute="bottom" constant="461" id="Qwj-k7-D8Z"/>
+                            <constraint firstItem="5UN-PY-0g3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SEW-Uu-3YP"/>
                             <constraint firstItem="SdD-ll-Q8U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UI3-d6-mJr"/>
+                            <constraint firstItem="Mbb-Bs-1tE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dHb-GO-aCW"/>
                             <constraint firstItem="USI-NJ-xR7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="sYK-U2-Cog"/>
                             <constraint firstItem="SdD-ll-Q8U" firstAttribute="top" secondItem="USI-NJ-xR7" secondAttribute="bottom" constant="8" id="ueY-hB-B5G"/>
                         </constraints>
@@ -66,6 +75,7 @@
                         <outlet property="_login_button" destination="Mbb-Bs-1tE" id="QWM-yx-RHH"/>
                         <outlet property="_password" destination="SdD-ll-Q8U" id="gua-vB-o47"/>
                         <outlet property="_username" destination="USI-NJ-xR7" id="rd9-T8-xhl"/>
+                        <outlet property="progressView" destination="5UN-PY-0g3" id="zgP-nS-60k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
