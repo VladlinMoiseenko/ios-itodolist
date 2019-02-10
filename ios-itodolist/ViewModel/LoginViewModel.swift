@@ -13,20 +13,18 @@ class LoginViewModel {
     
     let apiController: ApiController
     
-    //let status = Variable<Int>(0)
-    
-    private var modelAuthorize: Authorize {
-        willSet {
-            //print("ns:", newValue.status)
-        }
-    }
+//    private var modelAuthorize: Authorize {
+//        willSet {
+//            //print("ns:", newValue.status)
+//        }
+//    }
 
-    private var modelAccesstoken: Accesstoken
+    //private var modelAccesstoken: Accesstoken
     
     init(apiController: ApiController) {
         self.apiController = apiController
-        self.modelAuthorize = Authorize()
-        self.modelAccesstoken = Accesstoken()
+        //self.modelAuthorize = Authorize()
+        //self.modelAccesstoken = Accesstoken()
     }
 
      func apiAuthorize(_ username:String, _ password:String) {

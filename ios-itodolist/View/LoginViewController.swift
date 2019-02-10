@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: "updateProgressView", userInfo: nil, repeats: true)
         progressView.setProgress(0, animated: true)
         progressView.isHidden = false
-        progressView.progressViewStyle = UIProgressViewStyle.bar
+        progressView.progressViewStyle = UIProgressViewStyle.default
         
 //        if (UserDefaults.standard.string(forKey: "authorizationCode") == "empty") {
 //           print("empty")
