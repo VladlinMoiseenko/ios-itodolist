@@ -21,12 +21,14 @@ class LoginViewModel {
         }
     }
 
+    private var modelAccesstoken: Accesstoken
+    
     init(apiController: ApiController) {
         self.apiController = apiController
         self.modelAuthorize = Authorize()
+        self.modelAccesstoken = Accesstoken()
     }
 
-    //func apiAuthorize(_ username:String, _ password:String) -> Bool {
      func apiAuthorize(_ username:String, _ password:String) {
         
         let jsonParam = try? JSONEncoder().encode(Credentials(username: username, password: password))
@@ -39,11 +41,13 @@ class LoginViewModel {
                 
                 UserDefaults.standard.set(modelAuthorize.authorizationCode, forKey: "authorizationCode")
                 
-//                apiController.accesstoken(param: param as! [String : Any], success: {model in
-//
-//                }, failure: { errorMsg in
-//                    print(errorMsg)
-//                })
+                let param = ["authorization_code" : modelAuthorize.authorizationCode]
+                
+                self.apiController.accesstoken(param: param as! [String : Any], success: {modelAccesstoken in
+                    print("modelAccesstoken", modelAccesstoken)
+                }, failure: { errorMsg in
+                    print(errorMsg)
+                })
                 
                 
             } else {
