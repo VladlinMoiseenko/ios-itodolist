@@ -38,35 +38,43 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbb-Bs-1tE">
-                                <rect key="frame" x="166.5" y="176" width="42" height="30"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5UN-PY-0g3">
+                                <rect key="frame" x="112.5" y="344" width="150" height="2"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="GXy-hR-Tzo"/>
-                                    <constraint firstAttribute="width" constant="42" id="pPp-HI-FyR"/>
+                                    <constraint firstAttribute="height" constant="2" id="4Ce-Xg-fGR"/>
+                                    <constraint firstAttribute="width" constant="150" id="cCp-oo-EpV"/>
+                                </constraints>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pg-LP-lFB">
+                                <rect key="frame" x="16" y="382" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbb-Bs-1tE">
+                                <rect key="frame" x="131.5" y="218" width="112" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="4Qh-42-2KB"/>
+                                    <constraint firstAttribute="height" constant="30" id="ksr-Pw-GUO"/>
                                 </constraints>
                                 <state key="normal" title="Log in"/>
                                 <connections>
                                     <action selector="LoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uLX-dt-jX5"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5UN-PY-0g3">
-                                <rect key="frame" x="112.5" y="229" width="150" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="mXG-up-cOQ"/>
-                                </constraints>
-                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Mbb-Bs-1tE" firstAttribute="top" secondItem="SdD-ll-Q8U" secondAttribute="bottom" constant="8" id="6Tx-XO-40l"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mbb-Bs-1tE" secondAttribute="bottom" constant="461" id="8Ha-tz-bNR"/>
-                            <constraint firstItem="5UN-PY-0g3" firstAttribute="top" secondItem="Mbb-Bs-1tE" secondAttribute="bottom" constant="23" id="IFr-n3-A4o"/>
+                            <constraint firstItem="5UN-PY-0g3" firstAttribute="top" secondItem="Mbb-Bs-1tE" secondAttribute="bottom" constant="96" id="3Fq-ND-Qzm"/>
                             <constraint firstItem="USI-NJ-xR7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OLt-CO-AMn"/>
-                            <constraint firstItem="5UN-PY-0g3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SEW-Uu-3YP"/>
+                            <constraint firstItem="Mbb-Bs-1tE" firstAttribute="top" secondItem="SdD-ll-Q8U" secondAttribute="bottom" constant="50" id="SxF-0f-SiK"/>
                             <constraint firstItem="SdD-ll-Q8U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UI3-d6-mJr"/>
-                            <constraint firstItem="Mbb-Bs-1tE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dHb-GO-aCW"/>
+                            <constraint firstItem="4Pg-LP-lFB" firstAttribute="top" secondItem="5UN-PY-0g3" secondAttribute="bottom" constant="36" id="a8D-cQ-iTc"/>
+                            <constraint firstItem="5UN-PY-0g3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nuv-sK-PUz"/>
+                            <constraint firstItem="4Pg-LP-lFB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nzh-iM-tt8"/>
                             <constraint firstItem="USI-NJ-xR7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="sYK-U2-Cog"/>
                             <constraint firstItem="SdD-ll-Q8U" firstAttribute="top" secondItem="USI-NJ-xR7" secondAttribute="bottom" constant="8" id="ueY-hB-B5G"/>
+                            <constraint firstItem="Mbb-Bs-1tE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yYE-AK-cRw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -76,6 +84,7 @@
                         <outlet property="_password" destination="SdD-ll-Q8U" id="gua-vB-o47"/>
                         <outlet property="_username" destination="USI-NJ-xR7" id="rd9-T8-xhl"/>
                         <outlet property="progressView" destination="5UN-PY-0g3" id="zgP-nS-60k"/>
+                        <outlet property="tLabel" destination="4Pg-LP-lFB" id="yhI-c7-6fj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

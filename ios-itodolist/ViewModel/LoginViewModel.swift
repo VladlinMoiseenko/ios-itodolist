@@ -13,6 +13,8 @@ class LoginViewModel {
     
     let apiController: ApiController
     
+    let title = Variable<String>("")
+    
 //    private var modelAuthorize: Authorize {
 //        willSet {
 //            //print("ns:", newValue.status)
@@ -35,21 +37,25 @@ class LoginViewModel {
         apiController.authorize(param: param as! [String : Any], success: {modelAuthorize in
             //self.modelAuthorize = modelAuthorize
             
-            if (modelAuthorize.status == 1) {
-                
-                UserDefaults.standard.set(modelAuthorize.authorizationCode, forKey: "authorizationCode")
+            if modelAuthorize.status == 1 {
                 
                 let param = ["authorization_code" : modelAuthorize.authorizationCode]
                 
                 self.apiController.accesstoken(param: param as! [String : Any], success: {modelAccesstoken in
+                    
                     print("modelAccesstoken", modelAccesstoken)
+                    if modelAccesstoken.status == 1 {
+                        UserDefaults.standard.set(modelAuthorize.authorizationCode, forKey: "accessToken")
+                    } else {
+                        UserDefaults.standard.set("empty", forKey: "accessToken")
+                    }
+                    
                 }, failure: { errorMsg in
                     print(errorMsg)
                 })
                 
-                
             } else {
-                UserDefaults.standard.set("empty", forKey: "authorizationCode")
+                UserDefaults.standard.set("empty", forKey: "accessToken")
             }
             
         }, failure: { errorMsg in

@@ -15,7 +15,7 @@ import SwinjectStoryboard
 class MainViewController: UIViewController {
 
     @IBOutlet weak var tLabel: UILabel!
-    
+        
     var mainViewModel: MainViewModel?
     
     override func viewDidLoad() {
