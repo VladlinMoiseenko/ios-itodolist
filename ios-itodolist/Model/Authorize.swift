@@ -1,7 +1,6 @@
 struct Authorize: Decodable {
     
     let status: Int
-    //let data: Array<Any>
     let authorizationCode: String
     let expiresAt: Int
     
@@ -25,14 +24,12 @@ struct Authorize: Decodable {
     
     init() {
         self.status = 0
-        //self.data = []
         self.authorizationCode = ""
         self.expiresAt = 0
     }
     
     init(jsonDict: [String: Any]) {
         status = jsonDict["status"] as? Int ?? 0
-        //data = jsonDict["data"] as? Array<Any> ?? []
         authorizationCode = jsonDict["authorizationCode"] as? String ?? ""
         expiresAt = jsonDict["expiresAt"] as? Int ?? 0
     }

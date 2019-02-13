@@ -13,22 +13,17 @@ class LoginViewModel {
     
     let apiController: ApiController
     
-    let title = Variable<String>("")
+    //let title = Variable<String>("")
     
-    //let someString = Variable("")
-    
-    private var modelAccesstoken: Accesstoken {
-        willSet {
-            title.value = "[FO:]\(newValue.accessToken)"
-        }
-    }
-    
-    //private var modelAccesstoken: Accesstoken
+//    private var modelAccesstoken: Accesstoken {
+//        willSet {
+//            title.value = "[FO:]\(newValue.accessToken)"
+//        }
+//    }
     
     init(apiController: ApiController) {
         self.apiController = apiController
-        //self.modelAuthorize = Authorize()
-        self.modelAccesstoken = Accesstoken()
+        //self.modelAccesstoken = Accesstoken()
     }
 
      func apiAuthorize(_ username:String, _ password:String) {
@@ -37,17 +32,12 @@ class LoginViewModel {
         let param = try? JSONSerialization.jsonObject(with: jsonParam!, options: []) as? [String : Any]
 
         apiController.authorize(param: param as! [String : Any], success: {modelAuthorize in
-            //self.modelAuthorize = modelAuthorize
-            
+
             if modelAuthorize.status == 1 {
-                
                 let param = ["authorization_code" : modelAuthorize.authorizationCode]
-                
                 self.apiController.accesstoken(param: param as! [String : Any], success: {modelAccesstoken in
                     
-                    self.modelAccesstoken = modelAccesstoken
-                    print("modelAccesstoken", modelAccesstoken)
-                    
+                    //self.modelAccesstoken = modelAccesstoken
                     if modelAccesstoken.status == 1 {
                         UserDefaults.standard.set(modelAccesstoken.accessToken, forKey: "accessToken")
                     } else {

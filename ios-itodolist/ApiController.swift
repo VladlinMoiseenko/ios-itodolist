@@ -16,8 +16,13 @@ class ApiController {
                                 headers: ["Content-Type": "application/json"])
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { resp, data in
-                let modelAuthorize: Authorize = try! JSONDecoder().decode(Authorize.self, from: data)
-                success(modelAuthorize)
+                do {
+                    let modelAuthorize: Authorize = try JSONDecoder().decode(Authorize.self, from: data)
+                    success(modelAuthorize)
+                } catch {
+                    let modelAuthorize = Authorize()
+                    success(modelAuthorize)
+                }
             }, onError: { error in
                 failure("Error")
             })
