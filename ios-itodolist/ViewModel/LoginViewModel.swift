@@ -15,18 +15,20 @@ class LoginViewModel {
     
     let title = Variable<String>("")
     
-//    private var modelAuthorize: Authorize {
-//        willSet {
-//            //print("ns:", newValue.status)
-//        }
-//    }
-
+    let someString = Variable("")
+    
+    private var modelAccesstoken: Accesstoken {
+        willSet {
+            title.value = "[FO:]\(newValue.accessToken)"
+        }
+    }
+    
     //private var modelAccesstoken: Accesstoken
     
     init(apiController: ApiController) {
         self.apiController = apiController
         //self.modelAuthorize = Authorize()
-        //self.modelAccesstoken = Accesstoken()
+        self.modelAccesstoken = Accesstoken()
     }
 
      func apiAuthorize(_ username:String, _ password:String) {
@@ -42,6 +44,8 @@ class LoginViewModel {
                 let param = ["authorization_code" : modelAuthorize.authorizationCode]
                 
                 self.apiController.accesstoken(param: param as! [String : Any], success: {modelAccesstoken in
+                    
+                    self.modelAccesstoken = modelAccesstoken
                     
                     print("modelAccesstoken", modelAccesstoken)
                     if modelAccesstoken.status == 1 {

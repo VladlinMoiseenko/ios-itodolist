@@ -23,13 +23,54 @@ class ViewController: UIViewController {
     
     @IBOutlet var tLabel: UILabel!
     
+    let res = Variable<String>("")
+    
+    let loginButton = UIButton(type: .roundedRect)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initInjections()
-        bindObservables()
+        //bindObservables()
         progressView.isHidden = true
+        
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.backgroundColor = UIColor.white
+        loginButton.frame = CGRect(x: 20, y: 200, width: 200, height: 40)
+        view.addSubview(loginButton)
+        
+        
+        //loginButton.rx_action = loginViewModel?.buttonAction
+        
+        
+        //loginButton.rx.bind(action) { _ in return "Hello"}
+        
+//        let button1 = UIButton()
+//        let button2 = UIButton()
+//        
+//        let action = Action<String, String> { input in
+//            print(input)
+//            return .just(input)
+//        }
+//        button1.rx.bind(action) {"Hello"}
+//        button2.rx.bind(action) { _ in return "Goodbye"}
+//        
+        
     }
 
+//    let action = Action<String, String> { input in
+//        print(input)
+//        return .just(input)
+//    }
+    
+//    private func bindObservables() {
+        //loginButton.rx.bind(action) { _ in return "Hello"}
+        //loginButton.rx.action = loginViewModel?.loginAction
+        //_ = loginViewModel?.title.asObservable().bind(to: tLabel.rx.text)
+        //        _ = loginViewModel?.title.asObservable().bind(to: res)
+        //        print(res)
+//    }
+    
+    
     @IBAction func LoginButton(_ sender: Any) {
         
         let username = _username.text
@@ -52,9 +93,7 @@ class ViewController: UIViewController {
         
     }
     
-    private func bindObservables() {
-        _ = loginViewModel?.title.asObservable().bind(to: tLabel.rx.text)
-    }
+
 
     func doLogin(_ username:String, _ password:String) {
 
