@@ -15,7 +15,7 @@ class LoginViewModel {
     
     let title = Variable<String>("")
     
-    let someString = Variable("")
+    //let someString = Variable("")
     
     private var modelAccesstoken: Accesstoken {
         willSet {
@@ -46,10 +46,10 @@ class LoginViewModel {
                 self.apiController.accesstoken(param: param as! [String : Any], success: {modelAccesstoken in
                     
                     self.modelAccesstoken = modelAccesstoken
-                    
                     print("modelAccesstoken", modelAccesstoken)
+                    
                     if modelAccesstoken.status == 1 {
-                        UserDefaults.standard.set(modelAuthorize.authorizationCode, forKey: "accessToken")
+                        UserDefaults.standard.set(modelAccesstoken.accessToken, forKey: "accessToken")
                     } else {
                         UserDefaults.standard.set("empty", forKey: "accessToken")
                     }

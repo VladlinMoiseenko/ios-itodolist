@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  ios-itodolist
-//
-//  Created by Admin on 07.02.2019.
-//  Copyright © 2019 Vladlin Moiseenko. All rights reserved.
-//
-
 import UIKit
 import RxSwift
 import RxCocoa
@@ -17,59 +9,50 @@ class ViewController: UIViewController {
     @IBOutlet var _username: UITextField!
     @IBOutlet var _password: UITextField!
     @IBOutlet var _login_button: UIButton!
-    @IBOutlet var progressView: UIProgressView!
+    @IBOutlet var indicatorView: UIActivityIndicatorView!
     
     var loginViewModel: LoginViewModel?
     
-    @IBOutlet var tLabel: UILabel!
+    var disposeBag = DisposeBag()
     
-    let res = Variable<String>("")
+    var label = UITextField(frame: CGRect(x: 20, y: 200, width: 200, height: 40))
     
-    let loginButton = UIButton(type: .roundedRect)
+    var timer = Timer()
     
+    func textFieldDidChange(_ label: UITextField) {
+            print(9)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initInjections()
-        //bindObservables()
-        progressView.isHidden = true
+
+        //label.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        label.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .allEditingEvents)
         
-        loginButton.setTitle("Login", for: .normal)
-        loginButton.backgroundColor = UIColor.white
-        loginButton.frame = CGRect(x: 20, y: 200, width: 200, height: 40)
-        view.addSubview(loginButton)
+        view.addSubview(label)
         
+        _ = loginViewModel?.title.asObservable().bind(to: label.rx.text)
         
-        //loginButton.rx_action = loginViewModel?.buttonAction
-        
-        
-        //loginButton.rx.bind(action) { _ in return "Hello"}
-        
-//        let button1 = UIButton()
-//        let button2 = UIButton()
-//        
-//        let action = Action<String, String> { input in
-//            print(input)
-//            return .just(input)
+//        label.addObserver(self, forKeyPath: "text", options: [.old, .new], context: nil)
+//        func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//            if keyPath == "text" {
+//                print("old:", change?[.oldKey])
+//                print("new:", change?[.newKey])
+//            }
 //        }
-//        button1.rx.bind(action) {"Hello"}
-//        button2.rx.bind(action) { _ in return "Goodbye"}
-//        
+        
+//        loginButton.rx.tap
+//            .subscribe({ _ in
+//                    self.res = "fofo"
+//                }
+//            ).disposed(by: disposeBag)
         
     }
-
-//    let action = Action<String, String> { input in
-//        print(input)
-//        return .just(input)
-//    }
     
-//    private func bindObservables() {
-        //loginButton.rx.bind(action) { _ in return "Hello"}
-        //loginButton.rx.action = loginViewModel?.loginAction
-        //_ = loginViewModel?.title.asObservable().bind(to: tLabel.rx.text)
-        //        _ = loginViewModel?.title.asObservable().bind(to: res)
-        //        print(res)
+//    init(apiController: ApiController) {
+//        self.apiController = apiController
+//        self.modelAccesstoken = Accesstoken()
 //    }
-    
     
     @IBAction func LoginButton(_ sender: Any) {
         
@@ -90,22 +73,32 @@ class ViewController: UIViewController {
         }
         
         doLogin(username!, password!)
+    }
+    
+    func timerAction() {
+        //print("action has started")
+        print(":", UserDefaults.standard.string(forKey: "accessToken"))
+        
+        
+//        "be5338ba055bbceb378af03cf9571141"
+//        "fb03922a5b06a94625279b5577fadb19"
         
     }
     
-
-
+    
     func doLogin(_ username:String, _ password:String) {
-
+        
+        self.indicatorView.startAnimating()
+        
+        self._login_button.isEnabled = false
+        
         UserDefaults.standard.set("empty", forKey: "accessToken")
         
         loginViewModel?.apiAuthorize(username, password)
         
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: "updateProgressView", userInfo: nil, repeats: true)
-        progressView.setProgress(0, animated: true)
-        progressView.progressViewStyle = UIProgressViewStyle.default
-        progressView.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
         
+
         
 //            if UserDefaults.standard.string(forKey: "accessToken") != "empty" {
 //                let vc = storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
@@ -118,11 +111,7 @@ class ViewController: UIViewController {
     
     }
     
-    func updateProgressView() {
-        if progressView.progress != 1 {
-            self.progressView.progress += 2/10
-        }
-    }
+
     
     private func initInjections() {
         loginViewModel = SwinjectStoryboard.getContainer().resolve(LoginViewModel.self)
