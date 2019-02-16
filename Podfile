@@ -10,5 +10,6 @@ target 'ios-itodolist' do
   pod 'SwinjectStoryboard', '1.0.0'
   pod 'RxAlamofire', '3.0.2'
   pod 'SnapKit', '~> 3.0.0'
+  pod 'RxDataSources', '~> 2.0.2'
 
 end
