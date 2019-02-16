@@ -45,7 +45,7 @@ class ApiController {
             .disposed(by: disposeBag)
     }
     
-    func getFirstData(success: @escaping (TaskModel) -> Void, failure: @escaping (String) -> Void) {
+    func fetchTasksData(success: @escaping (TaskData) -> Void, failure: @escaping (String) -> Void) {
         RxAlamofire.requestJSON(.get, "http://apitdlist.dev.vladlin.ru/v1/task")
             .observeOn(MainScheduler.instance)
             .map { (r, json) -> [String: Any] in
@@ -55,18 +55,16 @@ class ApiController {
                 return jsonDict
             }
             .subscribe(onNext: { jsonDict in
-                let model = TaskModel(jsonDict: jsonDict)
-                //print("m:", model)
+                //let model = Task(jsonDict: jsonDict)
                 
                 if let array = jsonDict["data"] as? [Any] {
                     for object in array {
                         if let ob = object as? [String: Any] {
-                            let dmodel = TaskDataModel(json: ob)
-                            //print("dm:", dmodel)
+                            let dmodel = TaskData(json: ob)
+                            success(dmodel)
                         }
                     }
                 }
-                success(model)
                 
             }, onError: { error in
                 failure("Error")

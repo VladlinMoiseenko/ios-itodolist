@@ -1,4 +1,4 @@
-struct TaskModel {
+struct Task {
     
     let status: Int
     let title: String
@@ -18,9 +18,14 @@ struct TaskModel {
     
 }
 
-struct TaskDataModel {
+struct TaskData {
     let id: String
     let title: String
+    
+    init() {
+        self.id = ""
+        self.title = ""
+    }
     
     init(json: [String: Any]) {
         id = json["id"] as? String ?? ""
